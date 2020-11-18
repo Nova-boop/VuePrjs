@@ -1,0 +1,17 @@
+<script>
+
+    // 1. 对象拷贝
+
+    let person1 = {"name":"lucy","age":25}
+    let person2 = {...person1}
+    console.log(person2); // {name: "lucy", age: 25}
+
+    // 2. 合并对象
+
+    let name = {"name":"li si"}
+    let age = {age:"18"}
+    let person3 = {...name,...age}
+    console.log(person3); // {name: "li si", age: "18"}
+
+
+</script>
