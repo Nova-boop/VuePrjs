@@ -5,10 +5,24 @@
     var f1 = function (s) {
         return s
     }
+    console.log("======f1");
     console.log(f1(1));
 
     // ES6
     var f2 = a => a
+    console.log("======f2");
     console.log(f2(5));
+
+    // 较为复杂的写法
+    var f3 = function (a,b) {
+        return a+b
+    }
+    console.log("======f3");
+    console.log(f3(5,8));
+
+    var f4 = (s,b)=>s+b
+    console.log("======f4");
+    console.log(f4 (5,8));
+
 
 </script>
