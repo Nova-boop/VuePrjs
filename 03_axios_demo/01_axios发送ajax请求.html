@@ -9,6 +9,7 @@
 
 <body>
     <div id="app">
+        <h1>Axios 执行ajax 请求</h1>
     </div>
 
     <script src="../00_js组件/vue.min.js"></script>
@@ -17,18 +18,32 @@
     <script>
         new Vue({
             el: '#app',
-            data: {},
-            created(){
-                // 页面渲染之前执行,调用定义的方法
-                this.save()
+            data: {
+                // 定义变量和初始值
+                userList: []
 
             },
-            methods:{
+            created() {
+                // 页面渲染之前执行,调用定义的方法
+                this.getUserList()
+
+            },
+            methods: {
                 // 编写具体的方法 
-                save(){
-
+                getUserList() {
+                    // 使用axios 发送ajax 请求
+                    // .then(箭头函数) 请求成功执行
+                    // .catch(箭头函数) 请求失败执行
+                    axios.get("00_data.json")
+                        .then(response => {
+                            // 得到成功执行的结果
+                            console.log("---response"+response);
+                        })
+                        .catch(err =>{
+                            // 得到请求失败的内容
+                            console.log("---error"+error);
+                        })
                 }
-
             }
         })
     </script>
