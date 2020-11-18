@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="search()">查询</button>
+        <!-- 简写事件方法 -->
+        <button @click="f1()"> f1函数</button>
+    </div>
+
+    <script src="vue.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                searchMap: {
+                    keyWord: "nova"
+                }
+            },
+            methods: {
+                search() {
+                    console.log("调用search...");
+                },
+                f1() {
+                    console.log("f1....");
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

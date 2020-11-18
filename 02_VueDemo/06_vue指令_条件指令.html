@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="ok"> 测试复选框状态
+        <!-- 条件指令 -->
+        <h1 v-if="ok"> 复选框被选中</h1>
+
+        <h1 v-else>复选框没被选中</h1>
+        <h1>{{ok}}</h1>
+    </div>
+
+    <script src="vue.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ok: false
+            },
+            methods: {
+                onSubmit() {
+                    console.log("调用onSubmit...");
+                    if (this.user.name) {
+                        console.log("提交表单");
+                    } else {
+                        alert("请输入用户名");
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

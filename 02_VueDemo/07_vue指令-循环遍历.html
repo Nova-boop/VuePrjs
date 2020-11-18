@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-for 循环遍历 -->
+        <table border="1">
+            <!--          值    索引     -->
+            <tr v-for="(value,index) in bookLists" >
+                <td>{{index}}</td>
+                <td>{{value.id}}</td>
+                <td>{{value.name}}</td>
+                <td>{{value.price}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="vue.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                bookLists: [
+                    { "id": 1, "name": "linux指令集合", "price": 4200 },
+                    { "id": 2, "name": "java 基础", "price": 720 },
+                    { "id": 3, "name": "Python", "price": 2900 },
+                    { "id": 4, "name": "c++ prime", "price": 8200 }]
+            },
+            methods: {
+                onSubmit() { }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
