@@ -17,7 +17,19 @@
     <script>
         new Vue({
             el: '#app',
-            data: {}
+            data: {},
+            created(){
+                // 页面渲染之前执行,调用定义的方法
+                this.save()
+
+            },
+            methods:{
+                // 编写具体的方法 
+                save(){
+
+                }
+
+            }
         })
     </script>
 

@@ -1,0 +1,25 @@
+{
+    "success": true,
+    "code": 2000,
+    "message": "成功",
+    "data": {
+        "items": [
+            {
+                "name": "lisi",
+                "age": 20
+            },
+            {
+                "name": "zhangsan",
+                "age": 30
+            },
+            {
+                "name": "wangwu",
+                "age": 30
+            },
+            {
+                "name": "zhaoliu",
+                "age": 18
+            }
+        ]
+    }
+}
