@@ -7,7 +7,11 @@
       </el-form-item>
 
       <el-form-item>
-        <el-select v-model="queryTeacher.level" clearable placeholder="讲师头衔">
+        <el-select
+          v-model="queryTeacher.level"
+          clearable
+          placeholder="讲师头衔"
+        >
           <el-option :value="1" label="高级讲师" />
           <el-option :value="2" label="首席讲师" />
         </el-select>
@@ -28,10 +32,13 @@
           type="datetime"
           placeholder="选择截止时间"
           value-format="yyyy-MM-dd HH:mm:ss"
-          default-time="00:00:00"/>
+          default-time="00:00:00"
+        />
       </el-form-item>
 
-      <el-button type="primary" icon="el-icon-search" @click="getTeacherList()">查询</el-button>
+      <el-button type="primary" icon="el-icon-search" @click="getTeacherList()"
+        >查询</el-button
+      >
       <el-button type="default" @click="resetData()">清空</el-button>
     </el-form>
 
@@ -71,7 +78,7 @@
             type="danger"
             size="mini"
             icon="el-icon-delete"
-            @click="removeDataById(scope.row.id)"
+            @click="delTeacher(scope.row.id)"
             >删除</el-button
           >
         </template>
@@ -126,8 +133,26 @@ export default {
           console.log(error);
         });
     },
+    delTeacher(id) {
+      this.$confirm("此操作将永久删除该讲师信息, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      }).then(() => {
+        teacher
+          .delTeacher(id)
+          .then((response) => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.getTeacherList();
+          })
+      });
+    },
     resetData() {
-      this.teacherList= {};
+      // 清空条件查询
+      this.teacherList = {};
       this.getTeacherList();
     },
   },

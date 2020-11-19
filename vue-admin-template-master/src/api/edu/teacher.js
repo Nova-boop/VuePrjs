@@ -20,6 +20,13 @@ export default {
       method: 'post',
       data: eduTeacher, // 把对象转换为json传递到接口中
     })
+  },
+  delTeacher(id){
+    return request({
+      url:`/eduService/eduTeacher/removeTeacher/${id}`,
+      method: 'delete'
+    })
+
   }
 }
 
