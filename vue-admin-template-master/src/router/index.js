@@ -38,6 +38,28 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/table',
+    name: '讲师',
+    meta: { title: '讲师', icon: 'example' },
+    children: [
+      {
+        path: 'teacherList',
+        name: '讲师列表',
+        component: () => import('@/views/edu/teacher/teacherList'),
+        meta: { title: '讲师列表', icon: 'table' }
+      },
+      {
+        path: 'addTeacher',
+        name: '添加讲师',
+        component: () => import('@/views/edu/teacher/addTeacher'),
+        meta: { title: '添加讲师', icon: 'tree' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
