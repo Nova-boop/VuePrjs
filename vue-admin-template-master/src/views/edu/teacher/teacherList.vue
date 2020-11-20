@@ -152,7 +152,7 @@ export default {
     },
     resetData() {
       // 清空条件查询
-      this.teacherList = {};
+      this.queryTeacher = {};
       this.getTeacherList();
     },
   },
