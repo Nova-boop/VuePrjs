@@ -62,6 +62,7 @@ export default {
 
   watch: {
     $route(to, from) {
+      // 监听
       this.init();
     },
   },
