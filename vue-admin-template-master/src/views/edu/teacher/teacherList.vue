@@ -44,7 +44,6 @@
 
     <!-- 表格 -->
     <el-table
-      v-loading="listLoading"
       :data="teacherList"
       element-loading-text="数据加载中"
       border
@@ -69,11 +68,11 @@
       <el-table-column prop="sort" label="排序" width="60" />
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
-          <router-link :to="'/edu/teacher/edit/' + scope.row.id">
-            <el-button type="primary" size="mini" icon="el-icon-edit"
+          <router-link :to="'/teacher/editTeacher/' + scope.row.id"
+            ><el-button type="primary" size="mini" icon="el-icon-edit"
               >修改</el-button
-            >
-          </router-link>
+            ></router-link
+          >
           <el-button
             type="danger"
             size="mini"
@@ -112,6 +111,7 @@ export default {
       teacherList: null, // 查询之后返回的集合
     };
   },
+
   created() {
     // 页面渲染之前执行,一般调用methods 中定义的方法
     this.getTeacherList();
@@ -126,11 +126,11 @@ export default {
           //   console.log(response);
           this.teacherList = response.data.items;
           this.total = response.data.total;
-          console.log(this.teacherList);
-          console.log(this.total);
+          //   console.log(this.teacherList);
+          //   console.log(this.total);
         })
         .catch((error) => {
-          console.log(error);
+          //   console.log(error);
         });
     },
     delTeacher(id) {
@@ -139,15 +139,13 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       }).then(() => {
-        teacher
-          .delTeacher(id)
-          .then((response) => {
-            this.$message({
-              type: "success",
-              message: "删除成功!",
-            });
-            this.getTeacherList();
-          })
+        teacher.delTeacher(id).then((response) => {
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+          this.getTeacherList();
+        });
       });
     },
     resetData() {
