@@ -59,15 +59,27 @@ export default {
       saveBtnDisabled: false, // 保存按钮是否禁用,
     };
   },
+
+  watch: {
+    $route(to, from) {
+      this.init();
+    },
+  },
+
   created() {
-    if (this.$route.params && this.$route.params.id) {
-      // 从路径中获取ID值
-      const id = this.$route.params.id;
-      this.getTeacherInfo(id);
-    }
+    this.init();
   },
 
   methods: {
+    init() {
+      if (this.$route.params && this.$route.params.id) {
+        // 从路径中获取ID值
+        const id = this.$route.params.id;
+        this.getTeacherInfo(id);
+      } else {
+        this.teacher = {};
+      }
+    },
     getTeacherInfo(id) {
       teacherApi.getTeacherInfo(id).then((response) => {
         this.teacher = response.data.teacher;
