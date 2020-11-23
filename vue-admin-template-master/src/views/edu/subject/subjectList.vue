@@ -41,15 +41,16 @@ export default {
   },
 
   methods: {
-    getAllSubject(){
-      subject.getAllSubject()
-      .then(response=>{
-        console.log(response);
-        // this.subjectList=response.data.SubjectList
-      })
-      .catch(error=>{
-        console.log(error);
-      })
+    getAllSubject() {
+      subject
+        .getAllSubject()
+        .then((response) => {
+          console.log(response);
+          // this.subjectList=response.data.SubjectList
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     filterNode(value, data) {
       if (!value) return true;
