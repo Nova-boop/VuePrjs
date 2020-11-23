@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       filterText: "",
-      subjectList: null,
+      subjectList: [],
       defaultProps: {
         children: "children",
         label: "label",
@@ -32,7 +32,7 @@ export default {
     };
   },
   created() {
-    this.getAllSubject;
+    this.getAllSubject();
   },
   watch: {
     filterText(val) {
@@ -45,8 +45,7 @@ export default {
       subject
         .getAllSubject()
         .then((response) => {
-          console.log(response);
-          // this.subjectList=response.data.SubjectList
+          this.subjectList=response.data.SubjectList
         })
         .catch((error) => {
           console.log(error);
