@@ -86,8 +86,7 @@ export default {
         level: 1,
         career: "",
         intro: "",
-        avatar:
-          "https://edu-nova.oss-cn-chengdu.aliyuncs.com/2020/11/22/aace77414ada4d208cf459870d4be94cfile.png"
+        avatar: "https://edu-nova.oss-cn-chengdu.aliyuncs.com/2020/11/22/aace77414ada4d208cf459870d4be94cfile.png"
       },
 
       // 上传弹框组件是否显示
