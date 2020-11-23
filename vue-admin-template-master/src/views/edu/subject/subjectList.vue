@@ -27,8 +27,8 @@ export default {
       subjectList: [],
       defaultProps: {
         children: "children",
-        label: "label",
-      },
+        label: "title"
+      }
     };
   },
   created() {
@@ -37,27 +37,27 @@ export default {
   watch: {
     filterText(val) {
       this.$refs.tree2.filter(val);
-    },
+    }
   },
 
   methods: {
     getAllSubject() {
       subject
         .getAllSubject()
-        .then((response) => {
-          this.subjectList=response.data.SubjectList
+        .then(response => {
+          console.log(response);
+          this.subjectList = response.data.SubjectList;
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     filterNode(value, data) {
       if (!value) return true;
       return data.label.indexOf(value) !== -1;
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>
