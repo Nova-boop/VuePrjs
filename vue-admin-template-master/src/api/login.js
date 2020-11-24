@@ -15,7 +15,7 @@ export function getInfo(token) {
   return request({
     url: '/eduService/user/info',
     method: 'get',
-    params: { token }
+    params: {token}
   })
 }
 

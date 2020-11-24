@@ -9,8 +9,8 @@
     <el-tree
       ref="tree2"
       :data="subjectList"
-      :props="defaultProps"
       :filter-node-method="filterNode"
+      :props="defaultProps"
       class="filter-tree"
       default-expand-all
     />

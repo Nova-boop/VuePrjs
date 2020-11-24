@@ -4,13 +4,13 @@
       <el-form-item label="信息描述">
         <el-tag type="info">课程分类模板</el-tag>
         <el-tag>
-          <i class="el-icon-download" />
+          <i class="el-icon-download"/>
           <a
             :href="
               OSS_PATH +
               '/2020/11/23/f8389138e8f04f3ba76b7e1fdb8601c3课程分类.xlsx'
             "
-            >点击下载模版</a
+          >点击下载模版</a
           >
         </el-tag>
       </el-form-item>
@@ -18,32 +18,33 @@
       <el-form-item label="选择Excel">
         <el-upload
           ref="upload"
+          :action="BASE_API + '/eduService/eduSubject/addSubject'"
           :auto-upload="false"
-          :on-success="fileUploadSuccess"
-          :on-error="fileUploadError"
           :disabled="importBtnDisabled"
           :limit="1"
-          :action="BASE_API + '/eduService/eduSubject/addSubject'"
-          name="file"
+          :on-error="fileUploadError"
+          :on-success="fileUploadSuccess"
           accept="application/vnd.ms-excel"
+          name="file"
         >
           <el-button slot="trigger" size="small" type="primary"
-            >选取文件</el-button
+          >选取文件
+          </el-button
           >
           <el-button
             :loading="loading"
-            style="margin-left: 10px"
             size="small"
+            style="margin-left: 10px"
             type="success"
             @click="submitUpload"
-            >{{ fileUploadBtnText }}</el-button
+          >{{ fileUploadBtnText }}
+          </el-button
           >
         </el-upload>
       </el-form-item>
     </el-form>
   </div>
 </template>
-
 
 
 <script>
@@ -57,7 +58,8 @@ export default {
       loading: false,
     };
   },
-  created() {},
+  created() {
+  },
   methods: {
     submitUpload() {
       this.fileUploadBtnText = "正在上传";
@@ -74,7 +76,7 @@ export default {
       });
 
       // 路由跳转
-       this.$router.push({ path: "/subject/list" });
+      this.$router.push({path: "/subject/list"});
     },
 
     fileUploadError(response) {

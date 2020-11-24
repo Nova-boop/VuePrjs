@@ -2,13 +2,13 @@
   <div class="app-container">
     <el-form label-width="120px">
       <el-form-item label="讲师名称">
-        <el-input v-model="teacher.name" />
+        <el-input v-model="teacher.name"/>
       </el-form-item>
       <el-form-item label="讲师排序">
         <el-input-number
           v-model="teacher.sort"
-          controls-position="right"
           :min="0"
+          controls-position="right"
         />
       </el-form-item>
       <el-form-item label="讲师头衔">
@@ -17,27 +17,27 @@
             数据类型一定要和取出的json中的一致，否则没法回填
             因此，这里value使用动态绑定的值，保证其数据类型是number
           -->
-          <el-option :value="1" label="高级讲师" />
-          <el-option :value="2" label="首席讲师" />
+          <el-option :value="1" label="高级讲师"/>
+          <el-option :value="2" label="首席讲师"/>
         </el-select>
       </el-form-item>
       <el-form-item label="讲师资历">
-        <el-input v-model="teacher.career" />
+        <el-input v-model="teacher.career"/>
       </el-form-item>
       <el-form-item label="讲师简介">
-        <el-input v-model="teacher.intro" :rows="10" type="textarea" />
+        <el-input v-model="teacher.intro" :rows="10" type="textarea"/>
       </el-form-item>
 
       <!-- 讲师头像：TODO -->
       <el-form-item label="讲师头像">
         <!-- 头衔缩略图 -->
-        <pan-thumb :image="teacher.avatar" />
+        <pan-thumb :image="teacher.avatar"/>
         <!-- 文件上传按钮 -->
         <el-button
-          type="primary"
           icon="el-icon-upload"
+          type="primary"
           @click="imagecropperShow = true"
-          >更换头像
+        >更换头像
         </el-button>
 
         <!--
@@ -48,10 +48,10 @@
         @crop-upload-success：上传成功后的回调 -->
         <image-cropper
           v-show="imagecropperShow"
-          :width="300"
-          :height="300"
           :key="imagecropperKey"
+          :height="300"
           :url="BASE_API + '/eduOss/file/upload'"
+          :width="300"
           field="file"
           @close="close"
           @crop-upload-success="cropSuccess"
@@ -63,7 +63,8 @@
           :disabled="saveBtnDisabled"
           type="primary"
           @click="saveOrUpdate"
-          >保存</el-button
+        >保存
+        </el-button
         >
       </el-form-item>
     </el-form>
@@ -77,7 +78,7 @@ import PanThumb from "@/components/PanThumb";
 
 export default {
   // 声明组件
-  components: { ImageCropper, PanThumb },
+  components: {ImageCropper, PanThumb},
   data() {
     return {
       teacher: {
@@ -157,7 +158,7 @@ export default {
         });
 
         // 切换到讲师列表路由
-        this.$router.push({ path: "/teacher/teacherList" });
+        this.$router.push({path: "/teacher/teacherList"});
       });
     },
     // 修改
@@ -169,7 +170,7 @@ export default {
           message: "修改成功!"
         });
         // 切换到讲师列表路由
-        this.$router.push({ path: "/teacher/teacherList" });
+        this.$router.push({path: "/teacher/teacherList"});
       });
     }
   }

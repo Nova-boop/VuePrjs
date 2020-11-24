@@ -46,9 +46,7 @@ export default {
       method: 'post',
       data: eduTeacher
     })
-
   }
 
 }
-
 
