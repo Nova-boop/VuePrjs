@@ -45,7 +45,6 @@ export default {
       subject
         .getAllSubject()
         .then(response => {
-          console.log(response);
           this.subjectList = response.data.SubjectList;
         })
         .catch(error => {
@@ -54,7 +53,7 @@ export default {
     },
     filterNode(value, data) {
       if (!value) return true;
-      return data.label.indexOf(value) !== -1;
+      return data.title.toLowerCase().indexOf(value) !== -1;
     }
   }
 };

@@ -72,6 +72,9 @@ export default {
         type: "success",
         message: response.message,
       });
+
+      // 路由跳转
+       this.$router.push({ path: "/subject/list" });
     },
 
     fileUploadError(response) {
