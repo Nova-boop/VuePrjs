@@ -2,6 +2,14 @@ import request from '@/utils/request'
 
 export default {
 
+  // 获取所有讲师列表
+  getAllTeacherList() {
+    return request({
+      url: 'eduService/eduTeacher/finAllTeacher',
+      method: 'get',
+    })
+  },
+
   // 获取讲师列表,条件分页查询
   getTeacherListPage(current, limit, queryTeacher) {
     return request({

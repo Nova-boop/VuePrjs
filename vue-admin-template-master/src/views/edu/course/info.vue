@@ -20,6 +20,13 @@
       <!-- 所属分类 TODO -->
 
       <!-- 课程讲师 TODO -->
+      <!-- 课程讲师 -->
+      <el-form-item label="课程讲师">
+        <el-select v-model="courseInfo.teacherId" placeholder="请选择">
+          <el-option v-for="teacher in teacherList" :key="teacher.id" :label="teacher.name" :value="teacher.id"/>
+        </el-select>
+      </el-form-item>
+
 
       <el-form-item label="总课时">
         <el-input-number :min="0" v-model="courseInfo.lessonNum" controls-position="right" placeholder="请填写课程的总课时数"/>
@@ -49,7 +56,8 @@
 
 <script>
 
-import course from "@/api/edu/course.js"
+import course from "@/api/edu/course"
+import teacher from "@/api/edu/teacher";
 
 const defaultForm = {
   title: '',
@@ -67,16 +75,24 @@ export default {
   data() {
     return {
       courseInfo: defaultForm,
-      saveBtnDisabled: false // 保存按钮是否禁用
-
+      saveBtnDisabled: false, // 保存按钮是否禁用
+      teacherList: [],
     }
   },
 
   created() {
     // this.savaOrUpdateCourseInfo()
+    this.getTeacherList()
   },
 
   methods: {
+    // 查询所有讲师
+    getTeacherList() {
+      teacher.getAllTeacherList()
+        .then(response => {
+          this.teacherList = response.data.items
+        })
+    },
     savaOrUpdateCourseInfo() {
       course.addCourseInfo(this.courseInfo)
         .then(response => {
@@ -86,14 +102,14 @@ export default {
             message: "添加课程信息成功!!",
           });
           // 跳转页面
-          this.$router.push({path: '/course/chapter/1'})
+          this.$router.push({path: '/course/chapter/' + response.data.courseId})
         })
-      .catch(error=>{
-        this.$message({
-          type: "error",
-          message: "添加失败!!",
-        });
-      })
+        .catch(error => {
+          this.$message({
+            type: "error",
+            message: "添加失败!!",
+          });
+        })
     }
   }
 }
