@@ -103,6 +103,8 @@ const defaultForm = {
   price: 0
 }
 
+import Tinymce from '@/components/Tinymce'
+
 export default {
   name: "info",
   data() {

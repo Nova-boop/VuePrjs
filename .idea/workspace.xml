@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7d02075-1d24-42ce-af6d-48c02e0967ed" name="Default Changelist" comment="" />
+    <list default="true" id="f7d02075-1d24-42ce-af6d-48c02e0967ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-admin-template-master/build/webpack.dev.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-admin-template-master/build/webpack.dev.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/info.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606182206266</updated>
-      <workItem from="1606182210595" duration="22303000" />
+      <workItem from="1606182210595" duration="24441000" />
     </task>
     <task id="LOCAL-00001" summary="Reformat Code">
       <created>1606183531782</created>
@@ -104,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606299465984</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="添加集成 tinymce 文本编辑器">
+      <created>1606362929073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606362929073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +137,8 @@
     <MESSAGE value="实现课程添加部分功能" />
     <MESSAGE value="实现课程添加部分功能-添加讲师" />
     <MESSAGE value="实现课程添加部分功能-添加课程分类 课程封面" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现课程添加部分功能-添加课程分类 课程封面" />
+    <MESSAGE value="添加集成 tinymce 文本编辑器" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加集成 tinymce 文本编辑器" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="393" key="#ESLint" timestamp="1606183079281">
@@ -137,10 +149,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="332" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606183639310" />
-    <state x="452" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606299471059">
+    <state x="452" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606362934248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606299471059" />
+    <state x="452" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606362934248" />
     <state x="708" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606183247511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
