@@ -6,7 +6,7 @@ export default {
   getAllTeacherList() {
     return request({
       url: 'eduService/eduTeacher/finAllTeacher',
-      method: 'get',
+      method: 'get'
     })
   },
 
@@ -17,7 +17,7 @@ export default {
       // url: '/eduService/eduTeacher/pageTeacherCondition/'+current+'/'+limit,
       url: `/eduService/eduTeacher/pageTeacherCondition/${current}/${limit}`,
       method: 'post',
-      data: queryTeacher, // 把对象转换为json传递到接口中
+      data: queryTeacher // 把对象转换为json传递到接口中
     })
   },
 
@@ -26,7 +26,7 @@ export default {
     return request({
       url: '/eduService/eduTeacher/addTeacher',
       method: 'post',
-      data: eduTeacher, // 把对象转换为json传递到接口中
+      data: eduTeacher // 把对象转换为json传递到接口中
     })
   },
 
