@@ -88,7 +88,7 @@ export default {
     },
 
     next() {
-      this.$router.push({path: '/course/publish/1'})
+      this.$router.push({path: '/course/publish/'+this.courseId})
     }
   }
 }

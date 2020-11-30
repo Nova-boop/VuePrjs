@@ -4,13 +4,13 @@
 
     <el-steps
       :active="1"
-      process-status="wait"
       align-center
+      process-status="wait"
       style="margin-bottom: 40px;"
     >
-      <el-step title="填写课程基本信息" />
-      <el-step title="创建课程大纲" />
-      <el-step title="最终发布" />
+      <el-step title="填写课程基本信息"/>
+      <el-step title="创建课程大纲"/>
+      <el-step title="最终发布"/>
     </el-steps>
 
     <el-form label-width="120px">
@@ -30,10 +30,10 @@
           @change="subjectLevelOneChanged"
         >
           <el-option
-            v-for="subject in subjectParentIdList"
-            :key="subject.id"
-            :label="subject.title"
-            :value="subject.id"
+            v-for="subjectP in subjectParentIdList"
+            :key="subjectP.id"
+            :label="subjectP.title"
+            :value="subjectP.id"
           />
         </el-select>
 
@@ -62,44 +62,39 @@
 
       <el-form-item label="总课时">
         <el-input-number
-          :min="0"
           v-model="courseInfo.lessonNum"
+          :min="0"
           controls-position="right"
           placeholder="请填写课程的总课时数"
         />
       </el-form-item>
 
       <!-- 课程简介  -->
-      <!-- <el-form-item label="课程简介">
-        <el-input
-          v-model="courseInfo.description"
-          placeholder=" 请填写课程简介"
-        />
-      </el-form-item> -->
       <el-form-item label="课程简介">
-        <tinymce :height="300" v-model="courseInfo.description" />
+        <tinymce v-model="courseInfo.description" :height="300"/>
       </el-form-item>
 
       <!-- 课程封面-->
       <el-form-item label="课程封面">
         <el-upload
-          :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload"
           :action="BASE_API + '/eduOss/file/upload'"
+          :before-upload="beforeAvatarUpload"
+          :on-success="handleAvatarSuccess"
+          :show-file-list="false"
           class="avatar-uploader"
         >
-          <img :src="courseInfo.cover" />
+          <img :src="courseInfo.cover"/>
         </el-upload>
       </el-form-item>
 
       <el-form-item label="课程价格">
         <el-input-number
-          :min="0"
           v-model="courseInfo.price"
+          :min="0"
           controls-position="right"
           placeholder="免费课程请设置为0元"
-        />元
+        />
+        元
       </el-form-item>
 
       <el-form-item>
@@ -107,7 +102,8 @@
           :disabled="saveBtnDisabled"
           type="primary"
           @click="savaOrUpdateCourseInfo"
-          >保存并下一步</el-button
+        >保存并下一步
+        </el-button
         >
       </el-form-item>
     </el-form>
@@ -120,24 +116,24 @@ import teacher from "@/api/edu/teacher";
 import subject from "@/api/edu/subject";
 import Tinymce from "@/components/Tinymce";
 
-const defaultForm = {
-  title: "",
-  subjectId: "",
-  teacherId: "",
-  lessonNum: 0,
-  subjectParentId: "",
-  description: "",
-  cover:
-    "https://edu-nova.oss-cn-chengdu.aliyuncs.com/2020/11/25/5cc1d9c55bde4db8a8292d139d1d74ce海湾.jpg", //默认值
-  price: 0
-};
 
 export default {
-  components: { Tinymce },
+  components: {Tinymce},
   name: "info",
   data() {
     return {
-      courseInfo: defaultForm,
+      courseInfo: {
+        title: "",
+        subjectId: "",
+        teacherId: "",
+        lessonNum: 0,
+        subjectParentId: "",
+        description: "",
+        cover:
+          "https://edu-nova.oss-cn-chengdu.aliyuncs.com/2020/11/25/5cc1d9c55bde4db8a8292d139d1d74ce海湾.jpg", //默认值
+        price: 0
+      },
+      courseId: '',
       saveBtnDisabled: false, // 保存按钮是否禁用
       teacherList: [],
       subjectParentIdList: [], //一级分类列表
@@ -147,11 +143,38 @@ export default {
   },
 
   created() {
+    // 获取路由中的ID
+    if (this.$route.params && this.$route.params.id) {
+      this.courseId = this.$route.params.id
+      this.getCourseInfoById();
+    }
     this.getTeacherList();
     this.getOneSubjectList();
   },
 
   methods: {
+    // 获取课程基本信息
+    getCourseInfoById() {
+      course.getCourseInfoById(this.courseId)
+        .then(response => {
+          //
+          this.courseInfo = response.data.courseInfoVo
+          // 查询所有的一级二级分类
+          subject.getAllSubject().then(response => {
+            // 先获取所有的一级分类
+            this.subjectParentIdList = response.data.SubjectList
+            // 遍历所有的一级分类,
+            for (let i = 0; i < this.subjectParentIdList.length; i++) {
+              // 当前的courseInfo 中的id 与一级分类是否一致
+              if (this.courseInfo.subjectParentId === this.subjectParentIdList[i].id) {
+                // 如果一致,返回二级分类的列表
+                this.subjectIdList = this.subjectParentIdList[i].children
+              }
+            }
+          })
+
+        })
+    },
     // 获取一级分类
     getOneSubjectList() {
       subject.getAllSubject().then(response => {
@@ -198,8 +221,7 @@ export default {
     },
 
     savaOrUpdateCourseInfo() {
-      course
-        .addCourseInfo(this.courseInfo)
+      course.addCourseInfo(this.courseInfo)
         .then(response => {
           // 提示信息
           this.$message({
@@ -207,9 +229,7 @@ export default {
             message: "添加课程信息成功!!"
           });
           // 跳转页面
-          this.$router.push({
-            path: "/course/chapter/" + response.data.courseId
-          });
+          this.$router.push({path: "/course/chapter/" + response.data.courseId});
         })
         .catch(error => {
           this.$message({
