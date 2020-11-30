@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f7d02075-1d24-42ce-af6d-48c02e0967ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-admin-template-master/src/api/edu/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-admin-template-master/src/api/edu/course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/chapter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/chapter.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-admin-template-master/src/views/edu/course/info.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606362929073</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成课程基本信息维护的回显">
+      <created>1606714777335</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606714777335</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +145,8 @@
     <MESSAGE value="实现课程添加部分功能-添加讲师" />
     <MESSAGE value="实现课程添加部分功能-添加课程分类 课程封面" />
     <MESSAGE value="添加集成 tinymce 文本编辑器" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加集成 tinymce 文本编辑器" />
+    <MESSAGE value="完成课程基本信息维护的回显" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成课程基本信息维护的回显" />
   </component>
   <component name="WindowStateProjectService">
     <state x="785" y="393" key="#ESLint" timestamp="1606183079281">
@@ -151,10 +157,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="332" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606183639310" />
-    <state x="452" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606362934248">
+    <state x="452" y="190" key="Vcs.Push.Dialog.v2" timestamp="1606714781341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606362934248" />
+    <state x="452" y="190" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606714781341" />
     <state x="708" y="415" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606183247511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

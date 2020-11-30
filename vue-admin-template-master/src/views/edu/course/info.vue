@@ -174,6 +174,8 @@ export default {
           })
 
         })
+
+      this.getTeacherList();
     },
     // 获取一级分类
     getOneSubjectList() {
@@ -219,8 +221,8 @@ export default {
       }
       return isJPG && isLt2M;
     },
-
-    savaOrUpdateCourseInfo() {
+    addCourseInfo() {
+      // 添加课程
       course.addCourseInfo(this.courseInfo)
         .then(response => {
           // 提示信息
@@ -231,12 +233,25 @@ export default {
           // 跳转页面
           this.$router.push({path: "/course/chapter/" + response.data.courseId});
         })
-        .catch(error => {
-          this.$message({
-            type: "error",
-            message: "添加失败!!"
-          });
+    },
+    updateCourseInfo() {
+      // 修改课程
+      course.updateCourseInfo(this.courseInfo).then(response => {
+        // 提示信息
+        this.$message({
+          type: "success",
+          message: "修改课程信息成功!!!"
         });
+        // 跳转页面
+        this.$router.push({path: "/course/chapter/" +  this.courseId});
+      })
+    },
+    savaOrUpdateCourseInfo() {
+      if (!this.courseInfo.id) {
+        this.addCourseInfo()
+      } else {
+        this.updateCourseInfo()
+      }
     }
   }
 };
