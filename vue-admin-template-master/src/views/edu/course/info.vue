@@ -141,6 +141,12 @@ export default {
       BASE_API: process.env.BASE_API
     };
   },
+  watch: {
+    $route(to, from) {
+      // 监听
+      this.savaOrUpdateCourseInfo();
+    }
+  },
 
   created() {
     // 获取路由中的ID
