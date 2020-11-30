@@ -34,7 +34,7 @@ export default {
 
   methods: {
     previous() {
-      this.$router.push({ path: '/course/chapter/1' })
+      this.$router.push({ path: '/course/chapter/'+this.courseId })
     },
 
     publish() {

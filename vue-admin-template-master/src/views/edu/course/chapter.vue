@@ -1,41 +1,41 @@
 <template>
-
   <div class="app-container">
+    <h2 style="text-align: center">发布新课程</h2>
 
-    <h2 style="text-align: center;">发布新课程</h2>
-
-    <el-steps :active="2" align-center process-status="wait" style="margin-bottom: 40px;">
-      <el-step title="填写课程基本信息"/>
-      <el-step title="创建课程大纲"/>
-      <el-step title="最终发布"/>
+    <el-steps
+      :active="2"
+      align-center
+      process-status="wait"
+      style="margin-bottom: 40px"
+    >
+      <el-step title="填写课程基本信息" />
+      <el-step title="创建课程大纲" />
+      <el-step title="最终发布" />
     </el-steps>
 
     <el-button type="text" @click="openChapterDialog()">添加章节</el-button>
 
     <!-- 显示章节 -->
     <ul class="chapterList">
-      <li
-        v-for="chapter in courseChapterVideoList"
-        :key="chapter.id">
+      <li v-for="chapter in courseChapterVideoList" :key="chapter.id">
         <p>
           {{ chapter.title }}
           <span class="acts">
-                <el-button type="text">添加课时</el-button>
-                <el-button style="" type="text" @click="openEditChapter(chapter.id)">编辑</el-button>
-                <el-button type="text">删除</el-button>
-            </span>
+            <el-button type="text">添加课时</el-button>
+            <el-button type="text" @click="openEditChapter(chapter.id)">编辑</el-button>
+            <el-button type="text">删除</el-button>
+          </span>
         </p>
 
         <!-- 视频 -->
         <ul class="chapterList videoList">
-          <li
-            v-for="video in chapter.children"
-            :key="video.id">
-            <p>{{ video.title }}
+          <li v-for="video in chapter.children" :key="video.id">
+            <p>
+              {{ video.title }}
               <span class="acts">
-                        <el-button type="text">编辑</el-button>
-                        <el-button type="text">删除</el-button>
-                    </span>
+                <el-button type="text">编辑</el-button>
+                <el-button type="text">删除</el-button>
+              </span>
             </p>
           </li>
         </ul>
@@ -46,10 +46,14 @@
     <el-dialog :visible.sync="dialogChapterFormVisible" title="添加章节">
       <el-form :model="chapter" label-width="120px">
         <el-form-item label="章节标题">
-          <el-input v-model="chapter.title"/>
+          <el-input v-model="chapter.title" />
         </el-form-item>
         <el-form-item label="章节排序">
-          <el-input-number v-model="chapter.sort" :min="0" controls-position="right"/>
+          <el-input-number
+            v-model="chapter.sort"
+            :min="0"
+            controls-position="right"
+          />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -59,32 +63,32 @@
     </el-dialog>
 
     <el-form label-width="120px">
-
       <el-form-item>
         <el-button @click="previous">上一步</el-button>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="next">下一步</el-button>
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="next"
+          >下一步</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-
-import chapter from '@/api/edu/chapter'
+import chapter from "@/api/edu/chapter";
 
 export default {
   data() {
     return {
-      courseId: '',
+      courseId: "",
       courseChapterVideoList: [],
       chapter: {
         // 用于封装章节的数据
-        title: '',
-        sort: 0
+        title: "",
+        sort: 0,
       },
       saveBtnDisabled: false, // 保存按钮是否禁用
       dialogChapterFormVisible: false, // 默认弹框的值
-    }
+    };
   },
 
   created() {
@@ -98,60 +102,57 @@ export default {
 
   methods: {
     // 修改数据弹框,实现数据回显
-    openEditChapter(chapterId){
+    openEditChapter(chapterId) {
       // 弹框
-      this.dialogChapterFormVisible=true
+      this.dialogChapterFormVisible = true;
       // 数据回显
-      chapter.getChapterInfo(chapterId).then(response=>{
-        this.chapter=response.data.chapter
-      })
+      chapter.getChapterInfo(chapterId).then((response) => {
+        this.chapter = response.data.chapter;
+      });
     },
 
-    openChapterDialog(){
+    openChapterDialog() {
       // 弹出添加章节页面
-      this.dialogChapterFormVisible=true
-      this.chapter.title = ""
-      this.chapter.sort=0
+      this.dialogChapterFormVisible = true;
+      this.chapter.title = "";
+      this.chapter.sort = 0;
     },
-    updateChapter(){
+    updateChapter() {},
 
-    },
-
-    addChapter(){
+    addChapter() {
       // 添加courseId到chapter
-      this.chapter.courseId = this.courseId
+      this.chapter.courseId = this.courseId;
       // 添加章节
-      chapter.addChapter(this.chapter).then(response=>{
+      chapter.addChapter(this.chapter).then((response) => {
         // 关闭弹框
-        this.dialogChapterFormVisible=false;
+        this.dialogChapterFormVisible = false;
         // 提示信息
         this.$message({
           type: "success",
-          message: "添加章节成功!!"
+          message: "添加章节成功!!",
         });
         // 刷新页面
         this.fetchChapterNestedListByCourseId();
-      })
+      });
     },
-    saveOrUpdate(){
-      this.addChapter()
+    saveOrUpdate() {
+      this.addChapter();
     },
     fetchChapterNestedListByCourseId() {
       // 根据id 查询课程章节列表
-      chapter.getChapterVideoList(this.courseId)
-        .then(response => {
-          this.courseChapterVideoList = response.data.chapterVideoList;
-        })
+      chapter.getChapterVideoList(this.courseId).then((response) => {
+        this.courseChapterVideoList = response.data.chapterVideoList;
+      });
     },
     previous() {
-      this.$router.push({path: '/course/info/' + this.courseId})
+      this.$router.push({ path: "/course/info/" + this.courseId });
     },
 
     next() {
-      this.$router.push({path: '/course/publish/' + this.courseId})
-    }
-  }
-}
+      this.$router.push({ path: "/course/publish/" + this.courseId });
+    },
+  },
+};
 </script>
 
 
@@ -175,7 +176,7 @@ export default {
   height: 70px;
   line-height: 50px;
   width: 100%;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
 }
 
 .chapterList .acts {
@@ -195,7 +196,6 @@ export default {
   height: 50px;
   line-height: 30px;
   width: 100%;
-  border: 1px dotted #DDD;
+  border: 1px dotted #ddd;
 }
-
 </style>
